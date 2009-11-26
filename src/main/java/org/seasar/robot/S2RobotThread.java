@@ -190,7 +190,7 @@ public class S2RobotThread implements Runnable {
                             logger.error("Crawling Access Exception at "
                                     + urlQueue.getUrl(), e);
                         }
-                    } catch (Exception e) {
+                    } catch (Throwable e) {
                         logger.error("Crawling Exception at "
                                 + urlQueue.getUrl(), e);
                     } finally {
