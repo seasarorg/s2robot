@@ -127,12 +127,14 @@ public class HtmlTransformer extends AbstractTransformer {
             responseData.setResponseBody(fis);
             updateCharset(responseData);
         } catch (RobotSystemException e) {
+            IOUtils.closeQuietly(fis);
             // clean up
             if (!tempFile.delete()) {
                 logger.warn("Could not delete a temp file: " + tempFile);
             }
             throw e;
         } catch (Exception e) {
+            IOUtils.closeQuietly(fis);
             // clean up
             if (!tempFile.delete()) {
                 logger.warn("Could not delete a temp file: " + tempFile);
@@ -152,12 +154,14 @@ public class HtmlTransformer extends AbstractTransformer {
             responseData.setResponseBody(fis);
             storeData(responseData, resultData);
         } catch (RobotSystemException e) {
+            IOUtils.closeQuietly(fis);
             // clean up
             if (!tempFile.delete()) {
                 logger.warn("Could not delete a temp file: " + tempFile);
             }
             throw e;
         } catch (Exception e) {
+            IOUtils.closeQuietly(fis);
             // clean up
             if (!tempFile.delete()) {
                 logger.warn("Could not delete a temp file: " + tempFile);
@@ -174,12 +178,14 @@ public class HtmlTransformer extends AbstractTransformer {
                 responseData.setResponseBody(fis);
                 storeChildUrls(responseData, resultData);
             } catch (RobotSystemException e) {
+                IOUtils.closeQuietly(fis);
                 // clean up
                 if (!tempFile.delete()) {
                     logger.warn("Could not delete a temp file: " + tempFile);
                 }
                 throw e;
             } catch (Exception e) {
+                IOUtils.closeQuietly(fis);
                 // clean up
                 if (!tempFile.delete()) {
                     logger.warn("Could not delete a temp file: " + tempFile);
