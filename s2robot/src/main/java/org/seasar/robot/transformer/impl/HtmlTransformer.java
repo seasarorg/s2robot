@@ -476,6 +476,7 @@ public class HtmlTransformer extends AbstractTransformer {
         // trim
         String url = u.trim();
 
+        // TODO ajax crawling
         int idx = url.indexOf('#');
         if (idx >= 0) {
             url = url.substring(0, idx);
@@ -501,6 +502,8 @@ public class HtmlTransformer extends AbstractTransformer {
             oldUrl = url;
             url = url.replaceFirst("/[^/]+/\\.\\./", "/");
         }
+
+        url = url.replaceAll("([^:])/+", "$1/");
 
         return url;
     }
